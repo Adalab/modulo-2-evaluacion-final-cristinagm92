@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Búsqueda de Anime</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Buscador de Series Anime</h1>
+    
+    <!-- Formulario de búsqueda -->
+    <form class="search-box">
+      <input type="text" class="search-input" placeholder="Introduce el título del anime" />
+      <button class="search-button">Buscar</button>
+      <button type="button" class="reset-button">Reset</button>
+    </form>
+
+    <div class="main-content">
+      <!-- Favoritos -->
+      <div class="favorites">
+        <h2>Favoritos</h2>
+        <ul class="favorites-list"></ul>
+        <button class="clear-favorites-button">Borrar todos</button>
+      </div>
+
+      <!-- Resultados -->
+      <div class="results-grid"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
