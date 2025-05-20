@@ -60,6 +60,7 @@ function toggleFavorite(card) {
   saveFavorites();
   renderFavorites();
 }
+
 function renderFavorites() {
   favoritesList.innerHTML = favorites.map(anime => `
     <li>
@@ -78,6 +79,7 @@ function renderFavorites() {
     });
   });
 }
+
 function updateResultCards() {
   document.querySelectorAll(".anime-card").forEach(card => {
     const animeId = parseInt(card.dataset.id);
@@ -106,4 +108,3 @@ resetButton.addEventListener("click", () => {
 });
 
 renderFavorites(); // pintar al cargar
-
