@@ -89,3 +89,21 @@ function updateResultCards() {
 function saveFavorites() {
   localStorage.setItem("favorites", JSON.stringify(favorites));
 }
+
+clearFavsButton.addEventListener("click", () => {
+  favorites = [];
+  saveFavorites();
+  renderFavorites();
+  updateResultCards();
+});
+
+resetButton.addEventListener("click", () => {
+  favorites = [];
+  searchInput.value = "";
+  resultsContainer.innerHTML = "";
+  saveFavorites();
+  renderFavorites();
+});
+
+renderFavorites(); // pintar al cargar
+
