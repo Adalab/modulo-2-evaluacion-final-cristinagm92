@@ -12,6 +12,10 @@ searchForm.addEventListener("submit", (ev) => {
   const query = searchInput.value.trim();
   resultsContainer.innerHTML = "";
 
+  // Cambiar fondo de body al gris cuando se haga la búsqueda
+  document.body.classList.remove("body-background-eren");
+  document.body.classList.add("body-background-gray");
+
   if (!query) return;
 
   fetch(`https://api.jikan.moe/v4/anime?q=${encodeURIComponent(query)}`)
@@ -70,7 +74,7 @@ function renderFavorites() {
   `).join("");
 
   document.querySelectorAll(".remove-fav").forEach(button => {
-    button.addEventListener("click", (e) => {
+    button.addEventListener("click", () => {
       const idToRemove = parseInt(button.dataset.id);
       favorites = favorites.filter(anime => anime.mal_id !== idToRemove);
       saveFavorites();
@@ -105,6 +109,11 @@ resetButton.addEventListener("click", () => {
   resultsContainer.innerHTML = "";
   saveFavorites();
   renderFavorites();
+
+  // Volver a fondo de Eren al resetear
+  document.body.classList.remove("body-background-gray");
+  document.body.classList.add("body-background-eren");
 });
 
 renderFavorites(); // Pintar favoritos al cargar
+
