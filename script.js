@@ -107,4 +107,4 @@ resetButton.addEventListener("click", () => {
   renderFavorites();
 });
 
-renderFavorites(); // pintar al cargar
+renderFavorites(); // Pintar favoritos al cargar

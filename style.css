@@ -1,9 +1,18 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: #f5f5f5;
   margin: 0;
   padding: 20px;
+
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+    url('https://i.imgur.com/V0Dp4OV.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #fff;
 }
+
+
 
 .container {
   max-width: 1200px;
@@ -51,10 +60,11 @@ h1 {
 
 .favorites {
   width: 250px;
-  background-color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.85);
   padding: 10px;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  color: #000;
 }
 
 .favorites h2 {
@@ -113,7 +123,7 @@ h1 {
 
 .anime-card {
   width: 210px;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.9);
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
@@ -132,10 +142,23 @@ h1 {
   padding: 10px;
   font-weight: bold;
   font-size: 16px;
+  color: #000;
+  background-color: rgba(255, 255, 255, 0.85);
 }
 
-/* Estilo especial para las favoritas */
 .anime-card.favorite {
   background-color: #333;
   color: white;
+}
+.logo-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.logo-icon {
+  width: 40px;
+  height: auto;
+  border-radius: 4px;
 }
