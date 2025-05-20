@@ -78,3 +78,14 @@ function renderFavorites() {
     });
   });
 }
+function updateResultCards() {
+  document.querySelectorAll(".anime-card").forEach(card => {
+    const animeId = parseInt(card.dataset.id);
+    const isFav = favorites.some(fav => fav.mal_id === animeId);
+    card.classList.toggle("favorite", isFav);
+  });
+}
+
+function saveFavorites() {
+  localStorage.setItem("favorites", JSON.stringify(favorites));
+}
