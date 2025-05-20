@@ -3,9 +3,8 @@ body {
   margin: 0;
   padding: 20px;
 
-  background-image:
-    linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-    url('https://i.imgur.com/V0Dp4OV.jpg');
+  background-color: rgb(64, 66, 68);
+    
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
