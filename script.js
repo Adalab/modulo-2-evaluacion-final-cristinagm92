@@ -4,15 +4,16 @@ const resultsContainer = document.querySelector(".results-grid");
 const favoritesList = document.querySelector(".favorites-list");
 const clearFavsButton = document.querySelector(".clear-favorites-button");
 const resetButton = document.querySelector(".reset-button");
+const favoritesSection = document.querySelector(".favorites");
 
 let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
 
+// Búsqueda
 searchForm.addEventListener("submit", (ev) => {
   ev.preventDefault();
   const query = searchInput.value.trim();
   resultsContainer.innerHTML = "";
 
-  // Cambiar fondo de body al gris cuando se haga la búsqueda
   document.body.classList.remove("body-background-eren");
   document.body.classList.add("body-background-gray");
 
@@ -30,13 +31,18 @@ searchForm.addEventListener("submit", (ev) => {
         const imageUrl = anime.images.jpg.image_url;
         const isDefault = imageUrl === "https://cdn.myanimelist.net/img/sp/icon/apple-touch-icon-256.png";
         const fixedUrl = isDefault ? "https://via.placeholder.com/210x295//666666/?text=TV" : imageUrl;
+
         const isFav = favorites.some(fav => fav.mal_id === anime.mal_id);
         const favClass = isFav ? "favorite" : "";
+
+        let scoreClass = "";
+        if (anime.score > 7) scoreClass = "RECOMENDADA";
 
         return `
           <div class="anime-card ${favClass}" data-id="${anime.mal_id}" data-title="${anime.title}" data-image="${fixedUrl}">
             <img src="${fixedUrl}" alt="${anime.title}" />
             <div class="anime-title">${anime.title}</div>
+            <div class="anime-score">Score: ${anime.score || "N/A"} <p>${scoreClass} ${anime.score}</p></div>
           </div>
         `;
       }).join("");
@@ -72,6 +78,13 @@ function renderFavorites() {
       <button class="remove-fav" data-id="${anime.mal_id}">x</button>
     </li>
   `).join("");
+
+  // Mostrar u ocultar sección
+  if (favorites.length === 0) {
+    favoritesSection.classList.add("hidden");
+  } else {
+    favoritesSection.classList.remove("hidden");
+  }
 
   document.querySelectorAll(".remove-fav").forEach(button => {
     button.addEventListener("click", () => {
@@ -110,10 +123,9 @@ resetButton.addEventListener("click", () => {
   saveFavorites();
   renderFavorites();
 
-  // Volver a fondo de Eren al resetear
   document.body.classList.remove("body-background-gray");
   document.body.classList.add("body-background-eren");
 });
 
-renderFavorites(); // Pintar favoritos al cargar
-
+// Inicial
+renderFavorites();
